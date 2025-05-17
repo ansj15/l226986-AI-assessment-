@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musical Instrument Recognition</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Musical Instrument Recognition</h1>
+            <p>Upload an image of a musical instrument to identify it</p>
+        </header>
+
+        <main>
+            <div id="modelStatus" class="model-status">
+                Loading model... Please wait
+                <div class="loading-spinner"></div>
+            </div>
+
+            <div class="upload-section">
+                <form id="predictionForm">
+                    <div class="upload-area" id="dropZone" style="opacity: 0.5;">
+                        <i class="fas fa-camera music-icon"></i>
+                        <div class="preview-container">
+                            <img id="imagePreview" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 200px; margin: 10px 0;">
+                        </div>
+                        <p>Drag & Drop your image here</p>
+                        <p>or</p>
+                        <label for="imageFile" class="upload-btn">Choose Image</label>
+                        <input type="file" id="imageFile" accept="image/*" hidden required disabled>
+                        <p class="file-name" id="fileName">No file selected</p>
+                    </div>
+                    <button type="submit" id="predictBtn" disabled>
+                        <i class="fas fa-search"></i> Identify Instrument
+                    </button>
+                </form>
+            </div>
+
+            <div class="result-section">
+                <div class="loader" id="loader">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <div id="prediction-result">
+                    <h2>Detected Instrument</h2>
+                    <div class="instrument-icon" id="instrumentIcon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="result-value" id="result">-</div>
+                    <div class="confidence" id="confidence"></div>
+                </div>
+            </div>
+        </main>
+
+        <div class="supported-instruments">
+            <h3>Supported Instruments</h3>
+            <div class="instrument-grid">
+                <div class="instrument-item">
+                    <i class="fas fa-drum"></i>
+                    <span>Tabla</span>
+                </div>
+                <div class="instrument-item">
+                    <i class="fas fa-piano"></i>
+                    <span>Piano</span>
+                </div>
+                <div class="instrument-item">
+                    <i class="fas fa-guitar"></i>
+                    <span>Guitar</span>
+                </div>
+                <div class="instrument-item">
+                    <i class="fas fa-violin"></i>
+                    <span>Violin</span>
+                </div>
+                <div class="instrument-item">
+                    <i class="fas fa-music"></i>
+                    <span>Flute</span>
+                </div>
+                <div class="instrument-item">
+                    <i class="fas fa-drum"></i>
+                    <span>Drums</span>
+                </div>
+                <div class="instrument-item">
+                    <i class="fas fa-music"></i>
+                    <span>Saxophone</span>
+                </div>
+                <div class="instrument-item">
+                    <i class="fas fa-music"></i>
+                    <span>Trumpet</span>
+                </div>
+                <div class="instrument-item">
+                    <i class="fas fa-guitar"></i>
+                    <span>Sitar</span>
+                </div>
+                <div class="instrument-item">
+                    <i class="fas fa-piano"></i>
+                    <span>Harmonium</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by TensorFlow.js | Made with <i class="fas fa-heart"></i></p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
